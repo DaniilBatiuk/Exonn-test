@@ -10,15 +10,18 @@ import { dropdownMenuClick } from "./helpers/dropdownMenuClick";
 export const Layout: React.FC = () => {
   return (
     <div className="wrapper" id="wrapper" onClick={dropdownMenuClick}>
-      <main className="main">
-        <aside className="aside"></aside>
-        <div className="main__content">
-          <Tabs />
-          <section className="main__section">
-            <Outlet />
-          </section>
-        </div>
-      </main>
+      <aside className="aside"></aside>
+      <div className="content">
+        <header className="header"></header>
+        <main className="main">
+          <div className="main__container">
+            <Tabs />
+            <section className="main__section">
+              <Outlet />
+            </section>
+          </div>
+        </main>
+      </div>
       <ToastContainer />
     </div>
   );

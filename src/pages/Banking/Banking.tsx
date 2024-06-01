@@ -1,3 +1,3 @@
 export const Banking: React.FC = () => {
-  return <div>Banking</div>;
+  return <p>Banking</p>;
 };

@@ -1,3 +1,3 @@
 export const Auswahllisten: React.FC = () => {
-  return <div>Auswahllisten</div>;
+  return <p>Auswahllisten</p>;
 };
