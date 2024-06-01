@@ -1,4 +1,4 @@
-export const moveInArray = <T extends { id: number }>(
+export const moveFromOneArrayToAnother = <T extends { id: number }>(
   id: number,
   fromList: Array<T>,
   setFromList: React.Dispatch<React.SetStateAction<T[]>>,

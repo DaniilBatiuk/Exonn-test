@@ -1,3 +1,3 @@
 export const Lagerverwaltung: React.FC = () => {
-  return <div>Lagerverwaltung</div>;
+  return <p>Lagerverwaltung</p>;
 };

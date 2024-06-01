@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 import { ICONS } from "../../../../utils/index";
-import { moveInArray } from "../../helpers/moveInArray";
+import { moveFromOneArrayToAnother } from "../../helpers/moveInArray";
 
 import "./Pin.scss";
 
@@ -38,10 +38,20 @@ export const Pin: React.FC<PinProp> = ({
       }}
       onClick={() =>
         pinnedTabList.find(el => el.id === selectItemId)
-          ? moveInArray(selectItemId, pinnedTabList, setPinnedTabList, setUnpinnedTabList)
+          ? moveFromOneArrayToAnother(
+              selectItemId,
+              pinnedTabList,
+              setPinnedTabList,
+              setUnpinnedTabList,
+            )
           : pinnedTabList.length >= 3
             ? toast.error("You can not pin more then 3 tabs!")
-            : moveInArray(selectItemId, unpinnedTabList, setUnpinnedTabList, setPinnedTabList)
+            : moveFromOneArrayToAnother(
+                selectItemId,
+                unpinnedTabList,
+                setUnpinnedTabList,
+                setPinnedTabList,
+              )
       }
     >
       {ICONS.pin()}

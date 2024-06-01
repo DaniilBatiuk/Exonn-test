@@ -3,23 +3,31 @@
 .wrapper {
   min-height: 100svh;
   display: flex;
+}
+
+.header {
+  height: clamp(30px, 4.8vw, 68px);
+}
+
+.content {
+  display: flex;
   flex-direction: column;
 }
 
 .main {
   flex: 1 1 auto;
-  // padding-inline: clamp(20px, 2.5vw, 30px);
   overflow-wrap: break-word;
   display: flex;
 
-  &__content {
+  &__container {
     display: flex;
     flex-direction: column;
     background-color: $colorWhiteAndBlueHover;
     flex: 1 1 auto;
-    margin-top: clamp(40px, 4.8vw, 68px);
+    // margin-top: clamp(30px, 4.8vw, 68px);
     border-top: 1px solid $colorBorder;
   }
+
   &__section {
     margin: clamp(15px, 2vw, 20px);
     background-color: $colorWhite;
@@ -31,8 +39,7 @@
 }
 
 .aside {
-  width: clamp(40px, 4vw, 62px);
+  width: clamp(25px, 4vw, 62px);
   border-right: 1px solid $colorBorder;
-  min-width: 40px;
   transition: all 0.2s ease-out;
 }

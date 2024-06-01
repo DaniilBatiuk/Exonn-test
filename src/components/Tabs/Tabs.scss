@@ -3,7 +3,7 @@
 .tabs {
   background-color: $colorWhite;
   display: flex;
-  width: calc(100vw - clamp(40px, 4vw, 62px));
+  width: calc(100vw - clamp(25px, 4vw, 62px));
 
   &.open-aside {
     width: calc(100vw - clamp(200px, 21vw, 244px));
@@ -50,6 +50,9 @@
       column-gap: 10px;
       align-items: center;
       position: relative;
+
+      -webkit-user-select: none;
+      user-select: none;
 
       &:not(:hover):not(.active)::after {
         content: "";

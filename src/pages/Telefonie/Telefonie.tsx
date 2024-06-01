@@ -1,3 +1,3 @@
 export const Telefonie: React.FC = () => {
-  return <div>Telefonie</div>;
+  return <p>Telefonie</p>;
 };
