@@ -13,11 +13,13 @@ import "./HiddenTabs.scss";
 type HiddenTabsProp = {
   pinnedTabList: TabList[];
   unpinnedTabList: TabList[];
+  setActiveTabId: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const HiddenTabs: React.FC<HiddenTabsProp> = ({
   pinnedTabList,
   unpinnedTabList,
+  setActiveTabId,
 }: HiddenTabsProp) => {
   const [isVisible, setIsVisible] = useState(false);
   const [notVisibleTabs, setNotVisibleTabs] = useState<TabList[]>([]);
@@ -65,7 +67,10 @@ export const HiddenTabs: React.FC<HiddenTabsProp> = ({
               to={tab.text}
               className="dropdown-menu__list-item"
               key={tab.id}
-              onClick={() => dropdownMenuClose()}
+              onClick={() => {
+                dropdownMenuClose();
+                setActiveTabId(tab.id);
+              }}
             >
               <div>
                 {iconSelect(tab.id)} <span>{tab.text}</span>
