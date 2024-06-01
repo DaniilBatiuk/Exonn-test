@@ -1,0 +1,16 @@
+@import "./fonts.scss";
+
+$colorWhite: rgba(255, 255, 255, 1);
+$colorWhiteHover: rgba(247, 243, 243, 1);
+$colorWhiteAndBlueHover: rgba(241, 245, 248, 1);
+$colorLightBlack: rgba(52, 52, 52, 1);
+$colorBorder: rgba(174, 182, 206, 0.2);
+$colorBorderTop: rgba(127, 133, 141, 1);
+$colorShadow: rgba(123, 127, 145, 0.07);
+$colorBlue: rgba(70, 144, 226, 1);
+
+%poppinsMedium12_14 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: clamp(12px, 2.5vw, 14px);
+}

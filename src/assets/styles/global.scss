@@ -1,0 +1,33 @@
+@import "./reset.scss";
+@import "./variables.scss";
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  @extend %poppinsMedium12_14;
+}
+
+body {
+  overflow-x: hidden;
+  color: rgba(127, 133, 141, 1);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: block;
+    width: 5px;
+    overflow: auto;
+    height: 5px;
+    background-color: rgb(207, 207, 207);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(167, 167, 167);
+    border-radius: 30px;
+  }
+}
+
+body:has(.modal.active) {
+  overflow-y: hidden !important;
+}
