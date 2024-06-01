@@ -1,5 +1,6 @@
 import { useMediaQuery } from "@siberiacancode/reactuse";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { ReactSortable } from "react-sortablejs";
 
 import "./Tabs.scss";
@@ -10,13 +11,17 @@ import { useDropDown } from "./hooks/useDropDown";
 import { useTabsHook } from "./hooks/useTabsHook";
 
 export const Tabs: React.FC = () => {
-  const [activeTab, setActiveTab] = useState(1000);
-  const [selectItemId, setSelectItemId] = useState(0);
-
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
 
   const { dropdownPosition, dropdownVisible, handleDropDown, setDropdownVisible } = useDropDown();
   const { pinnedTabList, setPinnedTabList, setUnpinnedTabList, unpinnedTabList } = useTabsHook();
+
+  const [activeTabId, setActiveTabId] = useState(
+    [...unpinnedTabList, ...pinnedTabList].find(tab => tab.text === path)?.id ?? 1000,
+  );
+  const [selectItemId, setSelectItemId] = useState(0);
 
   return (
     <section className="tabs">
@@ -28,15 +33,14 @@ export const Tabs: React.FC = () => {
           delay={isSmallDevice ? 2000 : 100}
           className="tabs__inner-list"
           onChoose={() => setDropdownVisible(false)}
-          onUnchoose={() => setDropdownVisible(false)}
         >
           {pinnedTabList.map(tab => (
             <Tab
               tab={tab}
               setSelectItemId={setSelectItemId}
               handleDropDown={handleDropDown}
-              setActiveTab={setActiveTab}
-              activeTab={activeTab}
+              setActiveTabId={setActiveTabId}
+              activeTabId={activeTabId}
               pinedList={true}
               key={tab.id}
             />
@@ -50,21 +54,24 @@ export const Tabs: React.FC = () => {
           animation={150}
           delay={isSmallDevice ? 2000 : 100}
           onChoose={() => setDropdownVisible(false)}
-          onUnchoose={() => setDropdownVisible(false)}
         >
           {unpinnedTabList.map(tab => (
             <Tab
               tab={tab}
               setSelectItemId={setSelectItemId}
               handleDropDown={handleDropDown}
-              setActiveTab={setActiveTab}
-              activeTab={activeTab}
+              setActiveTabId={setActiveTabId}
+              activeTabId={activeTabId}
               key={tab.id}
             />
           ))}
         </ReactSortable>
       </nav>
-      <HiddenTabs pinnedTabList={pinnedTabList} unpinnedTabList={unpinnedTabList} />
+      <HiddenTabs
+        pinnedTabList={pinnedTabList}
+        unpinnedTabList={unpinnedTabList}
+        setActiveTabId={setActiveTabId}
+      />
       {dropdownVisible && (
         <Pin
           setPinnedTabList={setPinnedTabList}

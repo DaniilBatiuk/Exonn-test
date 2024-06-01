@@ -10,8 +10,8 @@ type TabProp = {
   setSelectItemId: React.Dispatch<React.SetStateAction<number>>;
   handleDropDown: (event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent) => void;
   pinedList?: boolean;
-  setActiveTab: React.Dispatch<React.SetStateAction<number>>;
-  activeTab: number;
+  setActiveTabId: React.Dispatch<React.SetStateAction<number>>;
+  activeTabId: number;
 };
 
 export const Tab: React.FC<TabProp> = ({
@@ -19,15 +19,15 @@ export const Tab: React.FC<TabProp> = ({
   setSelectItemId,
   handleDropDown,
   pinedList = false,
-  setActiveTab,
-  activeTab,
+  setActiveTabId,
+  activeTabId,
 }: TabProp) => {
   const [timer, setTimer] = useState<number | null>(null);
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-    setActiveTab(tab.id);
+    setActiveTabId(tab.id);
     navigate(`${tab.text}`);
   };
 
@@ -58,7 +58,7 @@ export const Tab: React.FC<TabProp> = ({
   return (
     <div
       className={clsx("tabs__list-item", {
-        active: activeTab === tab.id,
+        active: activeTabId === tab.id,
         "border-gray": pinedList,
       })}
       onClick={handleClick}
